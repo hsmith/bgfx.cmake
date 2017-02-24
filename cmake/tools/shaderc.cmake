@@ -81,31 +81,31 @@ function( add_shader ARG_FILE )
 		set( OPTIONS ${BASE_OPTIONS} )
 		set( OUTPUT "${ARG_OUTPUT}/${PLATFORM}/${FILENAME}.bin" )
 		get_filename_component( OUTPUT "${OUTPUT}" ABSOLUTE )
-		if( "${PLATFORM}" STREQUAL "dx9" )
+		if( ${PLATFORM} STREQUAL "dx9" )
 			list( APPEND OPTIONS
 				WINDOWS
 				${DX9_PROFILE}
 				OUTPUT ${OUTPUT}
 			)
-		elseif( "${PLATFORM}" STREQUAL "dx11" )
+		elseif( ${PLATFORM} STREQUAL "dx11" )
 			list( APPEND OPTIONS
 				WINDOWS
 				${DX11_PROFILE}
 				OUTPUT ${OUTPUT}
 			)
-		elseif( "${PLATFORM}" STREQUAL "metal" )
+		elseif( ${PLATFORM} STREQUAL "metal" )
 			list( APPEND OPTIONS
 				WINDOWS
 				${HLSL_PROFILE}
 				OUTPUT ${OUTPUT}
 			)
-		elseif( "${PLATFORM}" STREQUAL "glsl" )
+		elseif( ${PLATFORM} STREQUAL "glsl" )
 			list( APPEND OPTIONS
 				LINUX
 				${GLSL_PROFILE}
 				OUTPUT ${OUTPUT}
 			)
-		elseif( "${PLATFORM}" STREQUAL "gles" )
+		elseif( ${PLATFORM} STREQUAL "gles" )
 			list( APPEND OPTIONS
 				ANDROID
 				OUTPUT ${OUTPUT}
@@ -212,22 +212,22 @@ function( shaderc_parse ARG_OUT )
 			set( PLATFORM "${P}" )
 		endif()
 	endforeach()
-	if( "${PLATFORM}" STREQUAL "" )
+	if( ${PLATFORM} STREQUAL "" )
 		message( SEND_ERROR "Call to shaderc_parse() must have a platform flag: ${PLATFORMS}" )
 		return()
-	elseif( "${PLATFORM}" STREQUAL "ANDROID" )
+	elseif( ${PLATFORM} STREQUAL "ANDROID" )
 		list( APPEND CLI "--platform" "android" )
-	elseif( "${PLATFORM}" STREQUAL "ASM_JS" )
+	elseif( ${PLATFORM} STREQUAL "ASM_JS" )
 		list( APPEND CLI "--platform" "asm.js" )
-	elseif( "${PLATFORM}" STREQUAL "IOS" )
+	elseif( ${PLATFORM} STREQUAL "IOS" )
 		list( APPEND CLI "--platform" "ios" )
-	elseif( "${PLATFORM}" STREQUAL "LINUX" )
+	elseif( ${PLATFORM} STREQUAL "LINUX" )
 		list( APPEND CLI "--platform" "linux" )
-	elseif( "${PLATFORM}" STREQUAL "NACL" )
+	elseif( ${PLATFORM} STREQUAL "NACL" )
 		list( APPEND CLI "--platform" "nacl" )
-	elseif( "${PLATFORM}" STREQUAL "OSX" )
+	elseif( ${PLATFORM} STREQUAL "OSX" )
 		list( APPEND CLI "--platform" "osx" )
-	elseif( "${PLATFORM}" STREQUAL "WINDOWS" )
+	elseif( ${PLATFORM} STREQUAL "WINDOWS" )
 		list( APPEND CLI "--platform" "windows" )
 	endif()
 
