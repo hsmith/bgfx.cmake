@@ -8,11 +8,21 @@
 # You should have received a copy of the CC0 Public Domain Dedication along with
 # this software. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
+file(
+    GLOB
+    SHADERC_LIB_SOURCES #
+    ${BGFX_DIR}/tools/shaderc/shaderc_*.cpp #
+    ${BGFX_DIR}/tools/shaderc/*.h #
+    ${BGFX_DIR/src/shader* #
+)
+
+add_library(shaderclib ${SHADERC_LIB_SOURCES}
+
 # Grab the shaderc source files
 file(
 	GLOB
 	SHADERC_SOURCES #
-	${BGFX_DIR}/tools/shaderc/*.cpp #
+	${BGFX_DIR}/tools/shaderc/shaderc.cpp #
 	${BGFX_DIR}/tools/shaderc/*.h #
 	${BGFX_DIR}/src/shader* #
 )
@@ -21,6 +31,7 @@ add_executable(shaderc ${SHADERC_SOURCES})
 
 target_link_libraries(
 	shaderc
+    PUBLIC shaderclib
 	PRIVATE bx
 			bgfx-vertexlayout
 			fcpp
